@@ -1,0 +1,11 @@
+admin:
+  branch:
+    store: "La nouvelle branche a bien été ajoutée"
+    update: "La branche a bien été modifiée"
+    delete: "La branche a bien été supprimée"
+  picture:
+    store: "La nouvelle photo a bien été ajoutée"
+    update: "La photo a bien été modifiée"
+    delete: "La photo a bien été supprimée"
+store:
+  error: "Une erreur est survenue"

@@ -1,0 +1,53 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Administration | Branches !' %}
+
+{% block header %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Gestion des branches</h1>
+            <button type="button" class="btn btn-outline-primary js-modal-trigger"
+                    data-toggle="modal"
+                    data-target="#modal"
+                    data-title="Ajouter une branche"
+                    data-route="{{ path('admin.branches.create') }}">Ajouter une branche</button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if branches|length > 0 %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Intitulé</th>
+                <th scope="col" class="text-center">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for branch in branches %}
+                <tr>
+                    <th scope="row">{{ branch.name }}</th>
+                    <td class="text-center">
+                        <button type="button" class="btn btn-outline-primary js-modal-trigger"
+                                data-toggle="modal"
+                                data-target="#modal"
+                                data-title="Editer la branche"
+                                data-route="{{ path('admin.branches.edit', {id: branch.id}) }}">Editer</button>
+                        <button type="button" class="btn btn-outline-secondary js-modal-trigger"
+                                data-toggle="modal"
+                                data-target="#modal"
+                                data-style="danger"
+                                data-title="Supprimer une branche"
+                                data-route="{{ path('admin.branches.delete', {id: branch.id}) }}">Supprimer</button>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            Aucune branche n'a été ajoutée
+        </div>
+    {% endif %}
+{% endblock %}

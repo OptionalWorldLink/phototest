@@ -1,0 +1,56 @@
+{% extends 'layouts/base.html.twig' %}
+
+{% block title 'Bienvenue !' %}
+
+{% block header %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3">Phototèques</h1>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    {% if pictures|length > 0 %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Intitulé</th>
+                <th scope="col">Branches associées</th>
+                <th scope="col">Mots clés</th>
+                <th scope="col">Copyright</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for picture in pictures %}
+                <tr>
+                    <th scope="row">{{ picture.name }}</th>
+                    <th scope="row">
+                        {% for branch in picture.branches %}
+                            {{ branch.name }}<br>
+                        {% endfor %}
+                    </th>
+                    <th scope="row">
+                        {% if picture.keywords is same as('') %}
+                            picture.keywords
+                        {% else %}
+                            <span class="text-danger">Aucun mot clé</span>
+                        {% endif %}
+                    </th>
+                    <th scope="row">
+                        {% if picture.copyright is same as('') %}
+                            picture.copyright
+                        {% else %}
+                            <span class="text-danger">Aucun copyright</span>
+                        {% endif %}
+                    </th>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-info">
+            Aucune photo n'est disponible pour le moment
+        </div>
+    {% endif %}
+{% endblock %}

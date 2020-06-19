@@ -1,0 +1,19 @@
+<div class="modal-body">
+    <h6 class="text-danger">
+        Êtes-vous sûr de vouloir supprimer cette branche ?
+    </h6>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+        <i class="bx bx-x d-block d-sm-none"></i>
+        <span class="d-none d-sm-block">Annuler</span>
+    </button>
+    <form method="post" action="{{ path('admin.branches.delete', {id: branch.id}) }}" style="display: inline-block">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ branch.id) }}">
+        <button type="submit" class="btn btn-danger ml-1">
+            <i class="bx bx-check d-block d-sm-none"></i>
+            Oui, supprimer
+        </button>
+    </form>
+</div>

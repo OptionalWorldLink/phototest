@@ -1,0 +1,15 @@
+{{ form_start(form, {'action': path('admin.branches.store'), 'method': 'POST'}) }}
+<div class="modal-body">
+    <div class="form-group">
+        {{ form_row(form.name) }}
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-light-secondary" data-dismiss="modal">
+        <span class="d-none d-sm-block">Annuler</span>
+    </button>
+    <button type="submit" class="btn btn-primary ml-1">
+        <span class="d-none d-sm-block">Ajouter</span>
+    </button>
+</div>
+{{ form_end(form) }}
